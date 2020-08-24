@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const cors = require("cors");
 
 
 mongoose
@@ -19,25 +18,7 @@ mongoose
 const app = express();
 
 
-
-// Cross Domain CORS whitlist
-const whitelist = [process.env.BACK_URL, process.env.FRONT_URL];
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log(`Origin: ${origin}`);
-    if (!origin) return callback(null, true);
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-};
-
-
 // Middleware Setup
-app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
