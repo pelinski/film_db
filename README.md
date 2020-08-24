@@ -1,7 +1,7 @@
 # Film rolls database
 Database for photo films. Currently supporting the following fields (mongoose notation):
-+ format: { type: String, default: "35mm" },
-+ filmType: { type: String, required: true, default: undefined },
++ serialNumber: { type: String, required: true },
++ filmId: { album: { type: String, required: true, default: "A" }, number: { type: Number, required: true } },
 + camera: { type: String, default: undefined },
 + colorType: { type: String, enum: ["b/w", "color"], default: undefined },
 + scan: { type: String, enum: ["CD", "scan", "none"], default: undefined },
