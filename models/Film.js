@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema(
   {
-    serialNumber: { type: String, unique: true, required: true },
+    serialNumber: { type: String, required: true },
+    filmId: { album: { type: String, required: true, default: "A" }, number: { type: Number, required: true } },
     format: { type: String, default: "35mm" },
     filmType: { type: String, required: true, default: null },
     ISO: { type: Number, default: null },

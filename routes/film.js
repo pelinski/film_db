@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const crypto = require("crypto");
 
 const Film = require("../models/Film");
 const errMsg = "Something went wrong";
@@ -19,8 +18,8 @@ router.get("/", async (req, res) => {
 //POST FILM
 router.post("/", async (req, res) => {
   try {
-    const serialNumber = crypto.randomBytes(2).toString('hex').toUpperCase();
-    const {
+
+    const { album = "A",
       filmType,
       camera,
       colorType,
@@ -29,8 +28,10 @@ router.post("/", async (req, res) => {
       month,
       location,
       comments } = req.body;
-
-    await Film.create({ serialNumber, filmType, camera, colorType, scan, date: { year, month }, location, comments },
+    const { filmId: lastFilmId } = await Film.findOne({ "filmId.album": album }).sort({ field: 'asc', _id: -1 }).limit(1) || 0;
+    const number = lastFilmId?.number + 1 || 1; //if there's no last film this is number 1
+    const serialNumber = album + number.toLocaleString(undefined, { minimumIntegerDigits: 2 });
+    await Film.create({ filmId: { album, number }, serialNumber, filmType, camera, colorType, scan, date: { year, month }, location, comments },
       async (err, film) => {
         if (err) return res.status(200).json({ message: errMsg, mongoError: err });
         res.status(200).json({ message: "Film created", film });
