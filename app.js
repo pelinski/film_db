@@ -7,7 +7,7 @@ const logger = require('morgan');
 
 
 mongoose
-  .connect(process.env.DBURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DBURL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -22,8 +22,6 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-
 
 
 const filmIdx = require('./routes/film');

@@ -6,14 +6,14 @@ Database for photo films. Currently supporting the following fields (mongoose no
 + colorType: { type: String, enum: ["b/w", "color"], default: undefined },
 + scan: { type: String, enum: ["CD", "scan", "none"], default: undefined },
 + date: {
-⋅⋅⋅year: { type: Number, default: undefined },
-⋅⋅⋅month: [{ type: String, enum: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], default: "unknown" }]
+  * year: { type: Number, default: undefined },
+  * month: [{ type: String, enum: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], default: undefined }]
 + },
 + location: [{ type: String, default: undefined }],
 + comments: { type: String, default: null }
    
    
-   ## .env model
+## .env model
 ````
 PORT=3000
 ENV=development
