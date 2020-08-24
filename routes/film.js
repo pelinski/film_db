@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const crypto = require("crypto");
 
 const Film = require("../models/Film");
-
 const errMsg = "Something went wrong";
 
 //GET ALL 
@@ -19,8 +19,8 @@ router.get("/", async (req, res) => {
 //POST FILM
 router.post("/", async (req, res) => {
   try {
+    const serialNumber = crypto.randomBytes(2).toString('hex').toUpperCase();
     const {
-      serialNumber,
       filmType,
       camera,
       colorType,
