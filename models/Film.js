@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const schema = new Schema(
   {
     serialNumber: { type: String, unique: true, required: true },
+    format: { type: String, default: "35mm" },
     filmType: { type: String, required: true, default: undefined },
     camera: { type: String, default: "unknown" },
     colorType: { type: String, enum: ["b/w", "color"], default: "unknown" },
