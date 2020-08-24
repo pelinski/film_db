@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "spellright.language": [
+    "en"
+  ],
+  "editor.minimap.enabled": false,
+  "spellright.documentTypes": [
+    "markdown",
+    "latex"
+  ]
+}
