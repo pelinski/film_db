@@ -1,0 +1,18 @@
+{
+  "name": "film_db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:pelinski/film_db.git",
+  "author": "Teresa Pelinski <teresapelinski@gmail.com>",
+  "license": "GNU General Public License v3.0",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "DEBUG=back:* nodemon ./bin/www",
+    "dev-windows": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
+    "nodemon": "^2.0.4"
+  }
+}
