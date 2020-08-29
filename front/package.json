@@ -1,0 +1,23 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "license": "GNU General Public License v3.0",
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "axios": "^0.20.0",
+    "parcel": "^1.12.4",
+    "react": ">=15",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "scripts": {
+    "start": "serve",
+    "build": "parcel build index.html",
+    "dev": "parcel index.html"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "sass": "^1.26.10"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "camera": [
+    "Minolta AF-EII",
+    "Haking Vision",
+    "Nikkormat FT",
+    "disposable",
+    "unknown"
+  ],
+  "format": [
+    "35mm"
+  ],
+  "colorType": [
+    "b/w",
+    "color"
+  ],
+  "scan": [
+    "CD",
+    "scan",
+    "none"
+  ]
+}
