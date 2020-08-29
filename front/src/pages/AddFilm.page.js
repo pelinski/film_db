@@ -38,7 +38,6 @@ export const AddFilmPage = () => {
       <SelectOption item="camera" {...{ data, handleInputChange }} />
       <SelectOption item="colorType" {...{ data, handleInputChange }} />
       <SelectOption item="scan" {...{ data, handleInputChange }} />
-      <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
       <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
       <Field item="filmType" {...{ handleInputChange, placeholder: "kodak-200" }} />
       <Field item="year" {...{ handleInputChange, placeholder: "2020" }} />
@@ -48,6 +47,8 @@ export const AddFilmPage = () => {
       <Field item="location" {...{
         handleInputChange, placeholder: "Madrid, Aachen (separate w comma)"
       }} />
+      <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
+
 
 
       < button type="submit" > add</button>
