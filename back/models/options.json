@@ -6,7 +6,16 @@
     "disposable",
     "unknown"
   ],
-  "film": [
+  "format": [
     "35mm"
+  ],
+  "colorType": [
+    "b/w",
+    "color"
+  ],
+  "scan": [
+    "CD",
+    "scan",
+    "none"
   ]
 }
