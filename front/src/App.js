@@ -1,10 +1,17 @@
 import React from 'react';
-
-//import './App.scss';
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import regeneratorRuntime from "regenerator-runtime"
+import './App.scss';
+import { AddFilmPage } from './pages/AddFilm.page';
 
 export const App = () => (<>
+  <Router>
+    <Switch>
+      <Route path="/add" exact component={AddFilmPage} />
 
-  <h1>hi</h1>
+    </Switch>
+  </Router>
+
+
 </>
 );
