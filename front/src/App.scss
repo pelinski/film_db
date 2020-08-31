@@ -1,4 +1,94 @@
-form {
+$color1: #c50018;
+$color2: #d2d4d2;
+$color3: #000000;
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", cursive;
+  :focus {
+    outline: none;
+  }
+}
+#container {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: Arial BLACK;
+  padding: 2vh 1vw;
+}
+
+header {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+h1,
+h2 {
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  text-rendering: optimizelegibility;
+}
+
+#content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  align-self: center;
+  width: 30vw;
+  padding: 50px 10px;
+  display: flex;
+  flex-direction: column;
+  .form-element {
+    margin: 0.5vh 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  select {
+    option:hover {
+      background: none !important;
+      background-color: black !important;
+      color: white;
+    }
+    option[selected] {
+      background: none !important;
+      background-color: black !important;
+      color: white;
+    }
+    option:checked {
+      background: none !important;
+      background-color: black !important;
+      color: white;
+    }
+    option {
+      .selected {
+        background: none !important;
+        background-color: black !important;
+        color: white;
+      }
+    }
+  }
+
+  button {
+    margin: 3vh 0;
+    height: 4vh;
+    width: 30%;
+    align-self: center;
+    color: white;
+    background-color: black;
+    border: 0;
+  }
+  h3 {
+    text-align: center;
+  }
+  span {
+    margin: 1.5vh 0;
+  }
 }

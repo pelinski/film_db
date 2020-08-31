@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, cloneElement } from "react";
 import { getOptions } from "../api/db.api";
+
 
 
 export const AddFilmPage = () => {
@@ -21,50 +22,64 @@ export const AddFilmPage = () => {
   }, [])
 
   const handleInputChange = e => {
+
     const value = e.target.value;
     const name = e.target.name;
+    console.log(value, name)
     setData({ ...data, [name]: value });
   };
   return (<>
-    <h1>Add film</h1>
+    <h2>ADD FILM</h2>
 
     <form onSubmit={e => {
       e.preventDefault();
       //handleSubmit(data);
       console.log(data)
     }}>
+      <span>
+        <SelectOption item="camera" {...{ data, handleInputChange }} />
+        <SelectOption item="scan" {...{ data, handleInputChange }} />
 
-      <SelectOption item="format" {...{ data, handleInputChange }} />
-      <SelectOption item="camera" {...{ data, handleInputChange }} />
-      <SelectOption item="colorType" {...{ data, handleInputChange }} />
-      <SelectOption item="scan" {...{ data, handleInputChange }} />
-      <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
-      <Field item="filmType" {...{ handleInputChange, placeholder: "kodak-200" }} />
-      <Field item="year" {...{ handleInputChange, placeholder: "2020" }} />
-      <Field item="month" {...{
-        handleInputChange, placeholder: "jan, feb (separate w comma)"
-      }} />
-      <Field item="location" {...{
-        handleInputChange, placeholder: "Madrid, Aachen (separate w comma)"
-      }} />
-      <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
-
-
-
-      < button type="submit" > add</button>
+      </span>
+      <span>
+        <h3>film</h3>
+        <SelectOption item="colorType" {...{ data, handleInputChange }} />
+        <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
+        <Field item="filmType" {...{ handleInputChange, placeholder: "kodak-200" }} />
+      </span>
+      <span>
+        <h3>content</h3>
+        <Field item="year" {...{ handleInputChange, placeholder: "2020" }} />
+        <Field item="month" {...{
+          handleInputChange, placeholder: "jan, feb (separate w comma)"
+        }} />
+        <Field item="location" {...{
+          handleInputChange, placeholder: "Madrid, Aachen (separate w comma)"
+        }} />
+        <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
+      </span>
+      <button type="submit" > ADD</button>
 
     </form>
 
   </>)
 }
 
-const SelectOption = ({ data, item, handleInputChange }) => <>
-  <label htmlFor={item}>{item}</label>
-  <select required name={item} value={data?.[item] || "loading"} onChange={handleInputChange}>
-    {data.options && data.options[item].map((e, i) => <option value={e} key={i}>{e}</option>)}
-  </select>
-</>
+const SelectOption = ({ data, item, handleInputChange }) =>
+  <div className="form-element">
+    <label htmlFor={item}>{item}</label>
+    <div className="custom-select" style={{ width: "200px" }}>
+      <select required name={item} value={data?.[item] || "[]"} onChange={handleInputChange} size={data.options && data.options[item].length}>
+        {data.options && data.options[item].map((e, i) => <option value={e} key={i} className={data[item] == e ? "selected" : ""}>{e}</option>)}
+      </select>
 
-const Field = ({ item, handleInputChange, placeholder = "" }) => <>
-  <label htmlFor={item}>{item} </label>
-  <input type="text" id={item} name={item} onChange={handleInputChange} {...{ placeholder }} /></>
+      {/* SELECT SHOULD BE HIDDEN TO AVOID THE BLUE SELECTION, CREATE ANOTHER ONE, LINK THE SELECTION AND SET SELECTION:HIDDEN*/}
+    </div>
+
+  </div >
+
+const Field = ({ item, handleInputChange, placeholder = "" }) =>
+  <div className="form-element">
+    <label htmlFor={item}>{item} </label>
+    <input type="text" id={item} name={item} onChange={handleInputChange} {...{ placeholder }} />
+  </div>
