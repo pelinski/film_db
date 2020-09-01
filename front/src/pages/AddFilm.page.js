@@ -68,13 +68,18 @@ export const AddFilmPage = () => {
 const SelectOption = ({ data, item, handleInputChange }) =>
   <div className="form-element">
     <label htmlFor={item}>{item}</label>
-    <div className="custom-select" style={{ width: "200px" }}>
+    <div className="hidden-select">
       <select required name={item} value={data?.[item] || "[]"} onChange={handleInputChange} size={data.options && data.options[item].length}>
         {data.options && data.options[item].map((e, i) => <option value={e} key={i} className={data[item] == e ? "selected" : ""}>{e}</option>)}
       </select>
-
-      {/* SELECT SHOULD BE HIDDEN TO AVOID THE BLUE SELECTION, CREATE ANOTHER ONE, LINK THE SELECTION AND SET SELECTION:HIDDEN*/}
+    </div >
+    <div className="select">
+      {data.options && data.options[item].map((e, i) => <div key={i} className={data[item] == e ? "select-element selected" : "select-element"} value={e} onClick={() => { const element = { target: { value: e, name: item } }; handleInputChange(element) }}>{e}</div>)}
     </div>
+
+
+    {/* SELECT SHOULD BE HIDDEN TO AVOID THE BLUE SELECTION, CREATE ANOTHER ONE, LINK THE SELECTION AND SET SELECTION:HIDDEN*/}
+
 
   </div >
 

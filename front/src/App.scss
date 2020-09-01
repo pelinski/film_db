@@ -52,27 +52,19 @@ form {
   }
 
   select {
-    option:hover {
+    display: none;
+  }
+
+  .select {
+    background-color: white;
+    color: black;
+    font-size: 0.7em;
+    .select-element:hover,
+    .selected {
+      cursor: pointer;
       background: none !important;
       background-color: black !important;
       color: white;
-    }
-    option[selected] {
-      background: none !important;
-      background-color: black !important;
-      color: white;
-    }
-    option:checked {
-      background: none !important;
-      background-color: black !important;
-      color: white;
-    }
-    option {
-      .selected {
-        background: none !important;
-        background-color: black !important;
-        color: white;
-      }
     }
   }
 
