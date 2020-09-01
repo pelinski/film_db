@@ -34,7 +34,7 @@ export const AddFilmPage = () => {
 
 
   return (<>
-    <h2>ADD FILM</h2>
+    <h2 className="page-title">ADD FILM</h2>
 
     <form onSubmit={e => {
       e.preventDefault();

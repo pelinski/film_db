@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -6,7 +7,9 @@ export const Layout = ({ children }) => (
   <>
     <div id="container">
       <header>
-        <h1 id="site-title">FILM DB</h1>
+        <Link to={"/"}>
+          <h1 id="site-title">FILMDB</h1>
+        </Link>
       </header>
       <div id="content">
         {children}
