@@ -24,6 +24,7 @@ export const AddFilmPage = () => {
   const handleInputChange = e => {
     let value = e.target.value;
     const name = e.target.name;
+    const arrValue = value.split(" ");
     name == "year" || name == "ISO" ? value = parseInt(value) : value = value;
     name == "month" || name == "location" ? value = arrValue : value = value;
     name == "year" || name == "month" ? setData({ ...data, date: { ...data.date, [name]: value } }) : setData({ ...data, [name]: value });
@@ -48,12 +49,12 @@ export const AddFilmPage = () => {
       <span>
         <h3>FILM</h3>
         <SelectOption item="colorType"  {...{ data, handleInputChange, title: "color?" }} />
-        <Field item="ISO" {...{ handleInputChange, placeholder: "400", type: "number" }} />
+        <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
         <Field item="filmType"{...{ handleInputChange, placeholder: "kodak-200", title: "film type" }} />
       </span>
       <span>
         <h3>CONTENT</h3>
-        <Field item="year"  {...{ handleInputChange, placeholder: "2020", title: "date:year", type: "number" }} />
+        <Field item="year"  {...{ handleInputChange, placeholder: "2020", title: "date:year" }} />
         <Field item="month"  {...{
           handleInputChange, placeholder: "jan, feb", title: "date:month(s)"
         }} />
@@ -85,8 +86,8 @@ const SelectOption = ({ data, item, handleInputChange, title = item }) =>
     </div>
   </div >
 
-const Field = ({ item, handleInputChange, placeholder = "", title = item, type = "text" }) =>
+const Field = ({ item, handleInputChange, placeholder = "", title = item }) =>
   <div className="form-element">
     <label htmlFor={item}>{title.toUpperCase()} </label>
-    <input id={item} name={item} onChange={handleInputChange} {...{ placeholder, type }} />
+    <input id={item} name={item} onChange={handleInputChange} {...{ placeholder, type: "text" }} />
   </div>
