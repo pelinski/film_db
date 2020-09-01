@@ -34,20 +34,21 @@ a {
 }
 
 header {
-  writing-mode: vertical-rl;
   width: 10vw;
   border-right: 8px solid black;
   h1 {
+    writing-mode: vertical-rl;
     text-orientation: upright;
     font-size: 3em;
     text-align: center;
   }
-}
-
-.page-title {
-  width: 5vw;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  .page-title {
+    width: 10vw;
+    height: 100vh;
+  }
+  marquee {
+    height: 100vh;
+  }
 }
 
 h2,

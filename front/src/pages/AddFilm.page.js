@@ -42,12 +42,13 @@ export const AddFilmPage = () => {
       handleSubmit(data);
       console.log(data)
     }}>
+      <marquee>ADD FILM</marquee>
       <span>
         <SelectOption item="camera" {...{ data, handleInputChange }} />
         <SelectOption item="scan" title="scanned?" {...{ data, handleInputChange }} />
       </span>
       <span>
-        <h3>FILM</h3>
+        <h3>FIlM</h3>
         <SelectOption item="colorType"  {...{ data, handleInputChange, title: "color?" }} />
         <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
         <Field item="filmType"{...{ handleInputChange, placeholder: "kodak-200", title: "film type" }} />
