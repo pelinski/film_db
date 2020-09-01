@@ -11,8 +11,8 @@ export const AddFilmPage = () => {
     camera: null,
     colorType: null,
     scan: null,
-    date: { year: null, month: null },
-    location: null,
+    date: { year: null, month: [] },
+    location: [],
     comments: null,
     options: null,
   })
@@ -22,39 +22,43 @@ export const AddFilmPage = () => {
   }, [])
 
   const handleInputChange = e => {
-
-    const value = e.target.value;
+    let value = e.target.value;
     const name = e.target.name;
-    console.log(value, name)
-    setData({ ...data, [name]: value });
+    name == "year" || name == "ISO" ? value = parseInt(value) : value = value;
+    name == "month" || name == "location" ? value = arrValue : value = value;
+    name == "year" || name == "month" ? setData({ ...data, date: { ...data.date, [name]: value } }) : setData({ ...data, [name]: value });
   };
+
+  const handleSubmit = (data) => (console.log(data));
+
+
+
   return (<>
     <h2>ADD FILM</h2>
 
     <form onSubmit={e => {
       e.preventDefault();
-      //handleSubmit(data);
+      handleSubmit(data);
       console.log(data)
     }}>
       <span>
         <SelectOption item="camera" {...{ data, handleInputChange }} />
-        <SelectOption item="scan" {...{ data, handleInputChange }} />
-
+        <SelectOption item="scan" title="scanned?" {...{ data, handleInputChange }} />
       </span>
       <span>
-        <h3>film</h3>
-        <SelectOption item="colorType" {...{ data, handleInputChange }} />
-        <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
-        <Field item="filmType" {...{ handleInputChange, placeholder: "kodak-200" }} />
+        <h3>FILM</h3>
+        <SelectOption item="colorType"  {...{ data, handleInputChange, title: "color?" }} />
+        <Field item="ISO" {...{ handleInputChange, placeholder: "400", type: "number" }} />
+        <Field item="filmType"{...{ handleInputChange, placeholder: "kodak-200", title: "film type" }} />
       </span>
       <span>
-        <h3>content</h3>
-        <Field item="year" {...{ handleInputChange, placeholder: "2020" }} />
-        <Field item="month" {...{
-          handleInputChange, placeholder: "jan, feb (separate w comma)"
+        <h3>CONTENT</h3>
+        <Field item="year"  {...{ handleInputChange, placeholder: "2020", title: "date:year", type: "number" }} />
+        <Field item="month"  {...{
+          handleInputChange, placeholder: "jan, feb", title: "date:month(s)"
         }} />
         <Field item="location" {...{
-          handleInputChange, placeholder: "Madrid, Aachen (separate w comma)"
+          handleInputChange, placeholder: "Madrid, Aachen"
         }} />
         <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
       </span>
@@ -65,26 +69,24 @@ export const AddFilmPage = () => {
   </>)
 }
 
-const SelectOption = ({ data, item, handleInputChange }) =>
+const SelectOption = ({ data, item, handleInputChange, title = item }) =>
   <div className="form-element">
-    <label htmlFor={item}>{item}</label>
+    <label htmlFor={item}>{title.toUpperCase()}</label>
     <div className="hidden-select">
       <select required name={item} value={data?.[item] || "[]"} onChange={handleInputChange} size={data.options && data.options[item].length}>
-        {data.options && data.options[item].map((e, i) => <option value={e} key={i} className={data[item] == e ? "selected" : ""}>{e}</option>)}
+        {data.options && data.options[item].map((e, i) => <option value={e} key={i}>{e}</option>)}
       </select>
     </div >
     <div className="select">
-      {data.options && data.options[item].map((e, i) => <div key={i} className={data[item] == e ? "select-element selected" : "select-element"} value={e} onClick={() => { const element = { target: { value: e, name: item } }; handleInputChange(element) }}>{e}</div>)}
+      {data.options && data.options[item].map((e, i) => <div key={i} className={data[item] == e ? "select-element selected" : "select-element"} value={e}
+        onClick={() => {
+          handleInputChange({ target: { value: e, name: item } })
+        }}>{e}</div>)}
     </div>
-
-
-    {/* SELECT SHOULD BE HIDDEN TO AVOID THE BLUE SELECTION, CREATE ANOTHER ONE, LINK THE SELECTION AND SET SELECTION:HIDDEN*/}
-
-
   </div >
 
-const Field = ({ item, handleInputChange, placeholder = "" }) =>
+const Field = ({ item, handleInputChange, placeholder = "", title = item, type = "text" }) =>
   <div className="form-element">
-    <label htmlFor={item}>{item} </label>
-    <input type="text" id={item} name={item} onChange={handleInputChange} {...{ placeholder }} />
+    <label htmlFor={item}>{title.toUpperCase()} </label>
+    <input id={item} name={item} onChange={handleInputChange} {...{ placeholder, type }} />
   </div>

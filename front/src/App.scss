@@ -27,10 +27,11 @@ header {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: "Press Start 2P", cursive;
   text-align: center;
-  text-rendering: optimizelegibility;
+  user-select: none;
 }
 
 #content {
@@ -46,6 +47,8 @@ form {
   display: flex;
   flex-direction: column;
   .form-element {
+    user-select: none;
+
     margin: 0.5vh 0;
     display: flex;
     justify-content: space-between;
@@ -77,9 +80,7 @@ form {
     background-color: black;
     border: 0;
   }
-  h3 {
-    text-align: center;
-  }
+
   span {
     margin: 1.5vh 0;
   }
