@@ -19,7 +19,6 @@ Database for photo films. Currently supporting the following fields (mongoose no
 ### back
 ````
 PORT=3000
-ENV=development
 DBURL="mongodb://localhost/film_db"
 BACK_URL="http://localhost:3000"
 FRONT_URL="http://localhost:1234"
