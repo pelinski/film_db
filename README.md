@@ -20,3 +20,6 @@ ENV=development
 DBURL="mongodb://localhost/film_db"
 BACK_URL="http://localhost:3000"
 ````
+
+### Credits
+Icon: https://thenounproject.com/search/?q=35mm&i=14280
