@@ -35,7 +35,7 @@ export const AddFilmPage = () => {
 
 
   return (<>
-    <div id="page-title"> <marquee loop="infinite" direction="right" behavior="scroll"> <h1>ADD FILM</h1></marquee></div>
+    <div id="page-title"> <marquee loop="infinite" direction="right" behavior="scroll"> <h1 >ADD FILM</h1></marquee></div>
     <form onSubmit={e => {
       e.preventDefault();
       handleSubmit(data);
