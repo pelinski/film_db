@@ -1,0 +1,24 @@
+{
+  "camera": [
+    "Minolta AF-EII",
+    "minolta2",
+    "canon rebel",
+    "Haking Vision",
+    "yashica",
+    "Nikkormat FT",
+    "disposable",
+    "unknown"
+  ],
+  "format": [
+    "35mm"
+  ],
+  "colorType": [
+    "b/w",
+    "color"
+  ],
+  "scan": [
+    "CD",
+    "scan",
+    "none"
+  ]
+}

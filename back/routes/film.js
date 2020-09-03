@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const Film = require("../models/Film");
+const options = require("../models/options.json")
+
 const errMsg = "Something went wrong";
+
+
 
 //GET ALL 
 router.get("/", async (req, res) => {
@@ -15,10 +19,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+//serve options for front form 
+
+router.get("/options", async (req, res) => {
+  try {
+    res.status(200).json(options)
+  }
+  catch (err) {
+    res.status(500).json({ message: errMsg })
+  }
+});
+
+
 //POST FILM
 router.post("/", async (req, res) => {
   try {
-
     const { album = "A",
       filmType,
       camera,

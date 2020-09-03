@@ -12,11 +12,22 @@ Database for photo films. Currently supporting the following fields (mongoose no
 + location: [{ type: String, default: undefined }],
 + comments: { type: String, default: null }
 .
-## .env model
 
+## .env model
+(running locally)
+
+### back
 ````
 PORT=3000
-ENV=development
 DBURL="mongodb://localhost/film_db"
 BACK_URL="http://localhost:3000"
+FRONT_URL="http://localhost:1234"
 ````
+
+### front 
+````
+BACK_URL="http://localhost:3000"
+````
+
+## Credits
+Icon: https://thenounproject.com/search/?q=35mm&i=14280

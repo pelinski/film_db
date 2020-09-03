@@ -1,0 +1,157 @@
+$color1: #00416a;
+$color2: #799f0c;
+$color3: #ffe000;
+@import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+$font1: "PT Mono", monospace;
+$form-font-size: 0.7em;
+$title-border: 8px solid black;
+* {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: $font1;
+  :focus {
+    outline: none;
+  }
+}
+#container {
+  box-sizing: border-box;
+  height: 100vh;
+  background: $color3;
+  color: black;
+  font-size: 3em;
+  display: flex;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+header {
+  width: 10vw;
+  border-right: $title-border;
+  h1 {
+    font-size: 3em;
+    text-align: center;
+  }
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+marquee {
+  height: 100vh;
+}
+#page-title {
+  height: 10vh;
+  border-bottom: $title-border;
+}
+
+h2,
+h3 {
+  font-family: $font1;
+  text-align: center;
+  user-select: none;
+}
+
+#content {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  form {
+    width: 90vw;
+    height: 90vh;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      font-size: $form-font-size;
+      height: 4vh;
+      align-self: center;
+      border: 0;
+      background-color: Transparent;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+    }
+    button:hover {
+      background-color: black;
+      color: white;
+      width: 5vw;
+    }
+
+    span {
+      height: 20vh;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1.5vh 0;
+      width: 90vw;
+
+      h3 {
+        text-align: justify;
+        width: 15%;
+        height: 20vh;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+      }
+      .options {
+        width: 85%;
+      }
+      .opt1 {
+        display: flex;
+        justify-content: space-between;
+      }
+      select {
+        display: none;
+      }
+
+      .two-col-select {
+        width: 40vw;
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .select {
+        color: black;
+        font-size: $form-font-size;
+        .select-element {
+          width: 20vw;
+        }
+        .select-element:hover,
+        .selected {
+          cursor: pointer;
+          background: none !important;
+          background-color: black !important;
+          color: white;
+        }
+      }
+      .form-element {
+        user-select: none;
+        margin: 0.5vh 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      input {
+        background: $color3;
+        border: none;
+        font-size: $form-font-size;
+        background-color: black;
+        color: white;
+      }
+
+      input:placeholder-shown {
+        background-color: $color3;
+        color: black;
+      }
+    }
+  }
+}
