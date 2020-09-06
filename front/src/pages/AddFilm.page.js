@@ -53,7 +53,7 @@ export const AddFilmPage = () => {
 
       <span>
         <div className="span-title" style={{ "height": hardRef.current?.getBoundingClientRect().height }}><h3 ref={hardRef}>HARDWARE</h3></div>
-        <div className="options row">
+        <div className="options row hardware">
           <SelectOption item="camera" {...{ data, handleInputChange, col: true }} />
           <SelectOption item="scan" title="scanned?" {...{ data, handleInputChange, col: true }} />
         </div>
@@ -62,22 +62,26 @@ export const AddFilmPage = () => {
         <div className="span-title" style={{ "height": hardRef.current?.getBoundingClientRect().height }}><h3 ref={filmRef} style={{ "position": "absolute", "margin": "0px", "left": hardRef.current?.getBoundingClientRect().x + hardRef.current?.getBoundingClientRect().width }}>FILM ROLL</h3></div>
         <div className="options row">
           <SelectOption item="colorType"  {...{ data, handleInputChange, title: "color?" }} />
-          <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
+          <Field item="ISO" {...{ handleInputChange, placeholder: "400", short: true }} />
           <Field item="filmType"{...{ handleInputChange, placeholder: "kodak-200", title: "film type" }} />
         </div>
       </span>
       <span>
         <div className="span-title" style={{ "height": hardRef.current?.getBoundingClientRect().height }}><h3 ref={contentRef}
           style={{ "position": "absolute", "margin": "0px", "left": hardRef.current?.getBoundingClientRect().x + hardRef.current?.getBoundingClientRect().width + filmRef.current?.getBoundingClientRect().width }} >CONTENT</h3></div>
-        <div className="options">
-          <Field item="year"  {...{ handleInputChange, placeholder: "2020", title: "date:year" }} />
-          <Field item="month"  {...{
-            handleInputChange, placeholder: "jan, feb", title: "date:month(s)"
-          }} />
-          <Field item="location" {...{
-            handleInputChange, placeholder: "Madrid, Aachen"
-          }} />
-          <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
+        <div className="options row">
+          <div className="col">
+            <Field item="year"  {...{ handleInputChange, placeholder: "2020", title: "date:year", short: true }} />
+            <Field item="month"  {...{
+              handleInputChange, placeholder: "jan, feb", title: "date:month(s)"
+            }} />
+            <Field item="location" {...{
+              handleInputChange, placeholder: "Madrid, Aachen"
+            }} />
+          </div>
+          <div className="col ">
+            <TextArea item="comments" {...{ handleInputChange, placeholder: "Write here...", col: true }} />
+          </div>
         </div>
       </span>
       <div className="button-container">
@@ -107,8 +111,14 @@ const SelectOption = ({ data, item, handleInputChange, title = item, col = false
     </div>
   </div >
 
-const Field = ({ item, handleInputChange, placeholder = "", title = item, col = false }) =>
+const Field = ({ item, handleInputChange, placeholder = "", title = item, col = false, short = false }) =>
   <div className={`form-element ${col ? " col" : ""}`}>
     <label htmlFor={item}>{title.toUpperCase()} </label>
-    <input id={item} name={item} onChange={handleInputChange} {...{ placeholder, type: "text" }} />
+    <input id={item} name={item} onChange={handleInputChange} className={`${short ? " short" : ""}`} {...{ placeholder, type: "text" }} />
+  </div>
+
+const TextArea = ({ item, handleInputChange, placeholder = "", title = item, col = false }) =>
+  <div className={`form-element ${col ? " col" : ""}`}>
+    <label htmlFor={item}>{title.toUpperCase()} </label>
+    <textarea id={item} name={item} rows={3} onChange={handleInputChange} {...{ placeholder, type: "text" }} />
   </div>

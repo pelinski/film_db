@@ -9,6 +9,7 @@ $title-border: 8px solid black;
 $span-border: 8px solid black;
 $content-width: 90vw;
 $font-size-h3: 1.3em;
+$span-margin: 2vh;
 
 * {
   overflow: hidden;
@@ -80,7 +81,7 @@ h3 {
       display: flex;
       flex-direction: column;
       width: $content-width;
-      border-bottom: $span-border;
+
       .span-title {
         border-bottom: $title-border;
 
@@ -97,8 +98,15 @@ h3 {
         }
       }
 
+      .hardware {
+        .select-element {
+          width: 20vw;
+        }
+      }
       .options {
         width: $content-width;
+        padding: 0 3vw;
+        padding-bottom: $span-margin;
       }
       .row {
         display: flex;
@@ -118,9 +126,7 @@ h3 {
       .select {
         color: black;
         font-size: $form-font-size;
-        .select-element {
-          width: 20vw;
-        }
+
         .select-element:hover,
         .selected {
           cursor: pointer;
@@ -139,19 +145,25 @@ h3 {
         display: flex;
         align-items: center;
         font-style: italic;
+        padding: 0 5px;
       }
       .col {
         flex-direction: column;
       }
-      input {
+      input,
+      textarea {
         background: $color3;
         border: none;
         margin: 0;
         font-size: $form-font-size;
         background-color: black;
         color: white;
+        resize: none;
       }
-
+      .short {
+        width: 7vw;
+      }
+      textarea:placeholder-shown,
       input:placeholder-shown {
         background-color: $color3;
         color: black;
@@ -160,14 +172,12 @@ h3 {
     .button-container {
       width: $content-width;
       height: 10vh;
-
-      border-bottom: $title-border;
+      background-color: black;
       button {
         height: 10vh;
-
+        color: white;
         align-self: center;
         font-size: $font-size-h3;
-        padding-right: 10vw;
         padding-left: 1vw;
         font-weight: 700;
 
@@ -178,8 +188,6 @@ h3 {
         cursor: pointer;
         overflow: hidden;
         outline: none;
-        background-color: black;
-        color: white;
       }
     }
   }
