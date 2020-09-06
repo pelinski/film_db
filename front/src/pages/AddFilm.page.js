@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getOptions } from "../api/db.api";
 
 
@@ -15,11 +15,16 @@ export const AddFilmPage = () => {
     location: [],
     comments: null,
     options: null,
-  })
+  });
+  const filmRef = useRef(null);
+  const hardRef = useRef(null);
+  const contentRef = useRef(null);
+
 
   useEffect(() => {
     getOptions().then((res) => setData({ ...data, options: res.data }))
   }, [])
+
 
   const handleInputChange = e => {
     let value = e.target.value;
@@ -32,6 +37,10 @@ export const AddFilmPage = () => {
 
   const handleSubmit = (data) => (console.log(data));
 
+  console.log("hardRef", hardRef.current?.getBoundingClientRect())
+  console.log("filmRef", filmRef.current?.getBoundingClientRect().x)
+
+
 
 
   return (<>
@@ -43,22 +52,23 @@ export const AddFilmPage = () => {
     }}>
 
       <span>
-        <h3>HARD</h3>
-        <div className="options opt1">
-          <SelectOption item="camera" {...{ data, handleInputChange }} />
-          <SelectOption item="scan" title="scanned?" {...{ data, handleInputChange }} />
+        <div className="span-title" style={{ "height": hardRef.current?.getBoundingClientRect().height }}><h3 ref={hardRef}>HARDWARE</h3></div>
+        <div className="options row">
+          <SelectOption item="camera" {...{ data, handleInputChange, col: true }} />
+          <SelectOption item="scan" title="scanned?" {...{ data, handleInputChange, col: true }} />
         </div>
       </span>
       <span>
-        <h3>FIlM</h3>
-        <div className="options">
+        <div className="span-title" style={{ "height": hardRef.current?.getBoundingClientRect().height }}><h3 ref={filmRef} style={{ "position": "absolute", "margin": "0px", "left": hardRef.current?.getBoundingClientRect().x + hardRef.current?.getBoundingClientRect().width }}>FILM ROLL</h3></div>
+        <div className="options row">
           <SelectOption item="colorType"  {...{ data, handleInputChange, title: "color?" }} />
           <Field item="ISO" {...{ handleInputChange, placeholder: "400" }} />
           <Field item="filmType"{...{ handleInputChange, placeholder: "kodak-200", title: "film type" }} />
         </div>
       </span>
       <span>
-        <h3>CONTENT</h3>
+        <div className="span-title" style={{ "height": hardRef.current?.getBoundingClientRect().height }}><h3 ref={contentRef}
+          style={{ "position": "absolute", "margin": "0px", "left": hardRef.current?.getBoundingClientRect().x + hardRef.current?.getBoundingClientRect().width + filmRef.current?.getBoundingClientRect().width }} >CONTENT</h3></div>
         <div className="options">
           <Field item="year"  {...{ handleInputChange, placeholder: "2020", title: "date:year" }} />
           <Field item="month"  {...{
@@ -70,15 +80,17 @@ export const AddFilmPage = () => {
           <Field item="comments" {...{ handleInputChange, placeholder: "Write here..." }} />
         </div>
       </span>
-      <button type="submit" > ADD</button>
+      <div className="button-container">
+        <button style={{ "position": "absolute", "margin": "0px", "left": hardRef.current?.getBoundingClientRect().x + hardRef.current?.getBoundingClientRect().width + filmRef.current?.getBoundingClientRect().width + contentRef.current?.getBoundingClientRect().width }} type="submit" >
+          ADD TO DB</button></div>
 
     </form>
 
   </>)
 }
 
-const SelectOption = ({ data, item, handleInputChange, title = item }) =>
-  <div className="form-element">
+const SelectOption = ({ data, item, handleInputChange, title = item, col = false }) =>
+  <div className={`form-element ${col ? " col" : ""}`}>
     <label htmlFor={item}>{title.toUpperCase()}</label>
 
     <div className="hidden-select">
@@ -95,8 +107,8 @@ const SelectOption = ({ data, item, handleInputChange, title = item }) =>
     </div>
   </div >
 
-const Field = ({ item, handleInputChange, placeholder = "", title = item }) =>
-  <div className="form-element">
+const Field = ({ item, handleInputChange, placeholder = "", title = item, col = false }) =>
+  <div className={`form-element ${col ? " col" : ""}`}>
     <label htmlFor={item}>{title.toUpperCase()} </label>
     <input id={item} name={item} onChange={handleInputChange} {...{ placeholder, type: "text" }} />
   </div>

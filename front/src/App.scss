@@ -2,9 +2,14 @@ $color1: #00416a;
 $color2: #799f0c;
 $color3: #ffe000;
 @import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap");
+
 $font1: "PT Mono", monospace;
-$form-font-size: 0.7em;
+$form-font-size: 1em;
 $title-border: 8px solid black;
+$span-border: 8px solid black;
+$content-width: 90vw;
+$font-size-h3: 1.3em;
+
 * {
   overflow: hidden;
   margin: 0;
@@ -13,13 +18,16 @@ $title-border: 8px solid black;
   :focus {
     outline: none;
   }
+  h3 {
+    font-size: $font-size-h3;
+  }
 }
 #container {
   box-sizing: border-box;
   height: 100vh;
   background: $color3;
   color: black;
-  font-size: 3em;
+  font-size: 2.3em;
   display: flex;
 }
 
@@ -58,54 +66,41 @@ h3 {
 }
 
 #content {
-  width: 90vw;
+  width: $content-width;
   display: flex;
   flex-direction: column;
   form {
-    width: 90vw;
+    width: $content-width;
     height: 90vh;
     align-self: center;
     display: flex;
     flex-direction: column;
 
-    button {
-      font-size: $form-font-size;
-      height: 4vh;
-      align-self: center;
-      border: 0;
-      background-color: Transparent;
-      background-repeat: no-repeat;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      outline: none;
-    }
-    button:hover {
-      background-color: black;
-      color: white;
-      width: 5vw;
-    }
-
     span {
-      height: 20vh;
       display: flex;
-      flex-wrap: wrap;
-      margin: 1.5vh 0;
-      width: 90vw;
+      flex-direction: column;
+      width: $content-width;
+      border-bottom: $span-border;
+      .span-title {
+        border-bottom: $title-border;
 
-      h3 {
-        text-align: justify;
-        width: 15%;
-        height: 20vh;
-        hyphens: auto;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
+        h3 {
+          display: inline-block;
+          border-left: $span-border;
+          border-right: $span-border;
+          border-top: $span-border;
+          margin-left: 5vw;
+          padding: 0 1vw;
+          text-align: left;
+          background-color: black !important;
+          color: white;
+        }
       }
+
       .options {
-        width: 85%;
+        width: $content-width;
       }
-      .opt1 {
+      .row {
         display: flex;
         justify-content: space-between;
       }
@@ -140,9 +135,18 @@ h3 {
         display: flex;
         justify-content: space-between;
       }
+      label {
+        display: flex;
+        align-items: center;
+        font-style: italic;
+      }
+      .col {
+        flex-direction: column;
+      }
       input {
         background: $color3;
         border: none;
+        margin: 0;
         font-size: $form-font-size;
         background-color: black;
         color: white;
@@ -151,6 +155,31 @@ h3 {
       input:placeholder-shown {
         background-color: $color3;
         color: black;
+      }
+    }
+    .button-container {
+      width: $content-width;
+      height: 10vh;
+
+      border-bottom: $title-border;
+      button {
+        height: 10vh;
+
+        align-self: center;
+        font-size: $font-size-h3;
+        padding-right: 10vw;
+        padding-left: 1vw;
+        font-weight: 700;
+
+        border: $span-border;
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        background-color: black;
+        color: white;
       }
     }
   }
